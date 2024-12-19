@@ -36,41 +36,57 @@ class Scorer():
                            'duplication', 'inconsistency', 'language']
 
     def validate_response(self, response):
-        lines = response.split('\n')
-        if len(lines) < 2:
-            print("Number of lines is less than 2")
+        if not response:
+            print("Error: Empty response received.")
             return False, [], []
 
-        # only keep the lines with questions and types
-        lines = [line for line in lines if "Questions: " in line or "Types: " in line]
+        lines = response.strip().split('\n')
+        if len(lines) < 2:
+            print(f"Error: Number of lines is less than 2 (found {len(lines)}). Response: {response}")
+            return False, [], []
 
-        questions_pos = lines[0].find("Questions: ")
-        types_pos = -1
-        types_pos = lines[1].find("Types: ")
+        # 仅保留包含 "Questions: " 或 "Types: " 的行
+        filtered_lines = [line for line in lines if "Questions: " in line or "Types: " in line]
+
+        if len(filtered_lines) < 2:
+            print(
+                f"Error: After filtering, number of lines is less than 2 (found {len(filtered_lines)}). Response: {response}")
+            return False, [], []
+
+        questions_line = next((line for line in filtered_lines if "Questions: " in line), None)
+        types_line = next((line for line in filtered_lines if "Types: " in line), None)
+
+        if not questions_line or not types_line:
+            print(
+                f"Error: 'Questions: ' or 'Types: ' not found in response. Questions line: {questions_line}, Types line: {types_line}")
+            return False, [], []
+
+        questions_pos = questions_line.find("Questions: ")
+        types_pos = types_line.find("Types: ")
 
         if questions_pos == -1 or types_pos == -1:
-            print("Questions or types not found")
+            print(
+                f"Error: 'Questions: ' or 'Types: ' not found after filtering. Questions line: {questions_line}, Types line: {types_line}")
             return False, [], []
 
-        questions = lines[0][questions_pos + len("Questions: "):].strip()
-        types = lines[1][types_pos + len("Types: "):].strip()
-        types = types.lower()
+        questions = questions_line[questions_pos + len("Questions: "):].strip()
+        types = types_line[types_pos + len("Types: "):].strip().lower()
 
         if "no confusion" in questions:
             if "no confusion" not in types:
-                print("No confusion in questions but not in types")
+                print("Error: 'no confusion' found in questions but not in types.")
                 return False, [], []
             else:
                 return True, None, None
 
-        if types is not None:
+        if types:
             types = types.split(', ')
             for t in types:
                 if t.lower() not in self.all_labels:
-                    print(f"Invalid type: {t}")
+                    print(f"Error: Invalid type detected: {t}")
                     return False, [], []
 
-        if questions is not None and types is None:
+        if questions and types is None:
             raise ValueError("Questions is not None but types is None")
 
         return True, questions, types
@@ -127,7 +143,7 @@ class Scorer():
             annots = defaultdict(dict, annots)
             print(f"LOADED {len(annots)} annots FROM {self.annot_path}")
 
-        with open(template_path, 'r') as f:
+        with open(self.template_path, 'r') as f:
             template = f.read()
 
         for book, summary in tqdm(summaries.items(), total=len(summaries), desc="Iterating over summaries"):

@@ -83,7 +83,8 @@ def create_database(book_path, db_path, batch_size=32, model_name="BAAI/bge-smal
 
             # 定期保存进度
             if (i + batch_size) % 1000 == 0 or i + batch_size >= total_chunks:
-                print(f"Saving interim progress... ({i + batch_size}/{total_chunks})")
+                processed = min(i + batch_size, total_chunks)  # 修正进度计算
+                print(f"Saving interim progress... ({processed}/{total_chunks})")
                 current_embeddings = np.array(embeddings)
                 current_chunks = all_chunks[:len(embeddings)]
 
