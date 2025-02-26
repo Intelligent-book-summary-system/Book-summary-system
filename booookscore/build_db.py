@@ -101,6 +101,8 @@ def create_database(book_path, db_path, batch_size=32, model_name="BAAI/bge-smal
         db.save(db_path)
 
         print("Database creation completed successfully!")
+        # 展示数据库内容
+        # db.display_contents(num_entries=10)
 
     except Exception as e:
         print(f"An error occurred: {e}")

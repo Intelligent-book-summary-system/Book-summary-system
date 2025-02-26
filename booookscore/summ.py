@@ -23,11 +23,11 @@ class Summarizer:
                  summ_path,
                  method,
                  chunk_size,
-                 max_context_len,
-                 max_summary_len,
+                 max_context_len, # 获取上下文的长度
+                 max_summary_len, # 摘要的长度
                  retrieval_database=None,
                  hf_model="BAAI/bge-small-en-v1.5",
-                 word_ratio=0.65
+                 word_ratio=0.5 # 原文和和摘要的比例
                  ):
         self.client = APIClient(api, api_key, model)
         self.summ_path = summ_path
@@ -53,6 +53,12 @@ class Summarizer:
     def check_summary_validity(self, summary, token_limit):
         if len(summary) == 0:
             raise ValueError("Empty summary returned")
+
+        # 检查是否包含请求用户提供更多信息的语句
+        invalid_starts = ["unfortunately", "i don't", "please provide", "i'm ready", "it seems", "i don't see"]
+        if any(summary.lower().startswith(start) for start in invalid_starts):
+            return False
+
         if count_tokens(summary) > token_limit or summary[-1] not in ['.', '?', '!', '\"', '\'']:
             return False
         else:

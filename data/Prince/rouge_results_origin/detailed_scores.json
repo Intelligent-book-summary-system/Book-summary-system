@@ -1,0 +1,23 @@
+{
+  "The Enchanted Kingdom": {
+    "candidate": "In the kingdom of Seraphia, Princess Elara stands at the edge of a great change. According to an ancient prophecy, she is destined to marry Prince Alistair of Varion, uniting their kingdoms and bringing balance to the land. However, Elara begins to doubt the prophecy and her future with Alistair.\n\nHer trusted advisor, Lady Seraphine, reveals whispers of betrayal and a possible dark force that could disrupt the prophecy. Elara expresses her doubts to Alistair through a letter, and he too has heard rumors of betrayal and the rise of dark forces in Varion. A dark force is stirring in the east, threatening the kingdom of Seraphia.\n\nPrince Alistair decides to ride to Seraphia to meet with Elara and face the darkness together. They both believe that their union is the key to saving their kingdoms, but their doubts are growing. As Alistair sets out on his journey, he is determined to stand by Elara's side and face whatever challenges come their way.\n\nUpon meeting, they visit the ancient ruins in the east, where they discover a cursed relic, the source of the darkness. With their combined strength and determination, they manage to seal the relic, defeating the dark force and fulfilling the prophecy. Their union marks a new era of peace and prosperity, built on the foundation of love and trust, as they are coronated as the joint rulers of Varion and Seraphia.",
+    "reference": "In a distant kingdom, Prince Alistair of Varion and Princess Elara of Seraphia are bound by a prophecy that promises the salvation of their kingdoms through their union. As the time for their marriage approaches, Elara is troubled by whispers of betrayal, suggesting their union might bring darkness rather than peace. Meanwhile, Alistair grapples with his own doubts after receiving a letter from Elara, questioning their future together. The two embark on a perilous journey to confront a rising dark force, which threatens both their lands. Along the way, they discover their shared destiny and the true power of their union. As they reach the ancient ruins where the dark force resides, they confront a guardian and, together, use the strength of their kingdoms to seal away the evil. Their bond solidified, Alistair and Elara return to their kingdoms, now united, to rule with love and trust. The prophecy was not a burden but a path to their true strength, and together they create a prosperous future for their people.",
+    "scores": {
+      "rouge1": [
+        0.44680851063829785,
+        0.6176470588235294,
+        0.5185185185185186
+      ],
+      "rouge2": [
+        0.11965811965811966,
+        0.16568047337278108,
+        0.13895781637717122
+      ],
+      "rougeL": [
+        0.2170212765957447,
+        0.3,
+        0.2518518518518518
+      ]
+    }
+  }
+}

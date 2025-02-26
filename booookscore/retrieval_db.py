@@ -51,3 +51,12 @@ class RetrievalDatabase:
         with open(f"{path}_texts.pkl", 'rb') as f:
             db.texts = pickle.load(f)
         return db
+
+    def display_contents(self, num_entries=5):
+        """Display a sample of the database contents."""
+        if self.texts is not None:
+            for i in range(min(num_entries, len(self.texts))):
+                print(f"Text {i + 1}: {self.texts[i]}")
+        else:
+            print("No texts available in the database.")
+

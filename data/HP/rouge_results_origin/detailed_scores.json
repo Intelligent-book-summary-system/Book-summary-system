@@ -1,0 +1,23 @@
+{
+  "Harry Potter and the Philosopher's Stone": {
+    "candidate": "Harry James Potter, an 11-year-old boy, lives with his cruel relatives, Vernon and Petunia Dursley, and their spoiled son Dudley. Harry is unaware that he is a wizard, the son of famous wizards Lily and James Potter, who were killed by the dark wizard Lord Voldemort. However, Harry survived a deadly curse from Voldemort when he was a baby, and the dark wizard's spell backfired, leaving him nearly destroyed.\n\nHarry receives a mysterious letter from Rubeus Hagrid, the giant Keeper of Keys and Grounds at Hogwarts School of Witchcraft and Wizardry. Hagrid informs Harry that he has been accepted to Hogwarts and will be trained as a wizard. Harry boards the Hogwarts Express at King's Cross Station, accessing Platform 9\u00be through a magical barrier. He meets Ron Weasley and Hermione Granger on the train, forming a close-knit trio.\n\nAt Hogwarts, Harry discovers that Nicolas Flamel created the Philosopher's Stone, a powerful object granting eternal life. The stone's existence attracts attention, and Harry, Ron, and Hermione begin to suspect that someone at Hogwarts is searching for it. They encounter the stone's protection in the form of a three-headed dog, Fluffy, and a series of magical obstacles designed to safeguard the stone. However, it is revealed that Quirrell is secretly working for Lord Voldemort, attempting to use the Philosopher's Stone's powers to regain a physical body and become immortal.\n\nHarry thwarts Voldemort's attempt to steal the stone, but Quirrell dies in the process. In the aftermath, Professor Dumbledore explains to Harry that his survival is due to the love his mother, Lily Potter, had for him. This selfless love is a powerful magic that Voldemort cannot understand or overcome.",
+    "reference": "The story begins with Harry Potter, an 11-year-old boy who lives a miserable life with his cruel aunt, uncle, and cousin, the Dursleys. Harry is forced to live in a cupboard under the stairs, treated poorly by the Dursleys, who deny him any affection or love. Harry is unaware of his true identity, including the fact that he is a wizard and the survivor of an attack by the dark wizard Voldemort. His parents, Lily and James Potter, were killed by Voldemort, but Harry miraculously survived, leaving him with a lightning-shaped scar and making him a symbol of hope in the wizarding world.\nHarry's life changes when he receives an invitation to attend Hogwarts School of Witchcraft and Wizardry on his 11th birthday. Rubeus Hagrid, a giant and Keeper of Keys at Hogwarts, arrives to tell Harry that he is a wizard and that his parents were famous in the magical world. Harry learns that Voldemort attempted to kill him as a baby, but Harry\u2019s survival left Voldemort nearly destroyed.\nAt Hogwarts, Harry makes friends with Ron Weasley, from a large wizarding family, and Hermione Granger, a brilliant witch. The trio discovers the mystery surrounding the Philosopher's Stone, a magical object capable of granting immortality. They uncover that the stone is hidden at Hogwarts, guarded by a three-headed dog named Fluffy. As they investigate further, they realize that someone at the school is trying to steal the stone, and they face various magical challenges to prevent this from happening.\nEventually, they discover that the Defense Against the Dark Arts teacher, Professor Quirrell, is serving as a host for Voldemort's weakened form. Quirrell seeks the Philosopher's Stone to restore Voldemort to power. Harry confronts Quirrell in the final chamber and, using the magical protection bestowed by his mother\u2019s sacrifice, prevents Voldemort from obtaining the stone.\nThe book concludes with Harry returning to the Dursleys, but now with a newfound sense of belonging and hope, as well as the knowledge that he has a greater destiny to fulfill. The lessons of friendship, loyalty, and love guide him, preparing him for future challenges.",
+    "scores": {
+      "rouge1": [
+        0.6920415224913494,
+        0.5555555555555556,
+        0.6163328197226502
+      ],
+      "rouge2": [
+        0.2743055555555556,
+        0.2200557103064067,
+        0.2442040185471407
+      ],
+      "rougeL": [
+        0.3633217993079585,
+        0.2916666666666667,
+        0.3235747303543914
+      ]
+    }
+  }
+}
