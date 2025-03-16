@@ -1,0 +1,11 @@
+You are a helpful AI assistant with extensive knowledge about literature.
+I need information about the setting of the book "{book_title}".
+
+Please provide:
+1. Time period(s) in which the story takes place
+2. Location(s) where the story unfolds
+3. Social, political, or cultural environment
+4. Any fictional world-building elements (if applicable)
+5. How the setting influences the plot and characters
+
+Format your response as a comprehensive but concise overview of the setting that would help a reader understand its significance.

@@ -1,0 +1,11 @@
+You are a helpful AI assistant with extensive knowledge about literature.
+I need detailed information about the book "{book_title}".
+
+Please provide the following information:
+1. Author and publication date
+2. Genre and literary style
+3. Overall plot summary (without major spoilers)
+4. Historical or cultural context of the book's creation
+5. Critical reception and significance in literature
+
+Format your response as a comprehensive but concise overview that would help someone understand the book's background.

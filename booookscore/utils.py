@@ -6,6 +6,7 @@ import pickle
 import tiktoken
 from openai import OpenAI
 from anthropic import Anthropic
+import requests
 
 encoding = tiktoken.get_encoding('cl100k_base')
 
@@ -25,6 +26,8 @@ class APIClient():
             self.client = AnthropicClient(key_path, model)
         elif api == "together":
             self.client = TogetherClient(key_path, model)
+        elif api == "huggingface":
+            self.client = HuggingFaceClient(key_path, model)
         else:
             raise ValueError(f"API {api} not supported, custom implementation required.")
 
@@ -114,3 +117,30 @@ class TogetherClient(BaseClient):
             max_tokens=max_tokens
         )
         return response.choices[0].message.content
+
+
+class HuggingFaceClient(BaseClient):
+    def __init__(self, key_path, model):
+        super().__init__(key_path, model)
+        self.api_url = f"https://api-inference.huggingface.co/models/{self.model}"
+        self.headers = {"Authorization": f"Bearer {self.key}"}
+
+    def send_request(self, prompt, max_tokens, temperature):
+        payload = {
+            "inputs": prompt,
+            "parameters": {
+                "max_length": max_tokens,
+                "temperature": temperature
+            }
+        }
+
+        response = requests.post(self.api_url, headers=self.headers, json=payload)
+
+        if response.status_code == 200:
+            result = response.json()
+            if isinstance(result, list) and "generated_text" in result[0]:
+                return result[0]["generated_text"]
+            else:
+                raise ValueError(f"Unexpected response format: {result}")
+        else:
+            raise Exception(f"Hugging Face API error {response.status_code}: {response.text}")

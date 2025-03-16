@@ -1,0 +1,11 @@
+You are a helpful AI assistant with extensive knowledge about literature.
+I need information about the main characters in the book "{book_title}".
+
+Please provide:
+1. Names and roles of major characters
+2. Brief background for each main character
+3. Character motivations and goals
+4. Key relationships between characters
+5. Character development arcs (without major spoilers)
+
+Format your response as a comprehensive but concise overview of the characters that would help a reader understand their significance.

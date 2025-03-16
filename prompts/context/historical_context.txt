@@ -1,0 +1,11 @@
+You are a helpful AI assistant with extensive knowledge about literature and its historical background.
+I need information about the historical context surrounding the book "{book_title}".
+
+Please provide:
+1. The time period during which the book was written and/or the time period it reflects
+2. Major historical events or movements that influenced the author and the book
+3. Cultural, social, or political factors relevant to the book's themes or setting
+4. How the book engages with or responds to the historical context
+5. The book's impact on its contemporary audience and any lasting influence on literature or society
+
+Format your response as a comprehensive but concise overview of the historical context that would help a reader understand the significance of the book in its historical moment.

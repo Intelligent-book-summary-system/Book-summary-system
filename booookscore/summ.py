@@ -13,6 +13,7 @@ from transformers import pipeline, AutoTokenizer, AutoModel
 import torch
 import numpy as np
 from .retrieval_db import RetrievalDatabase
+import os
 
 
 class Summarizer:
@@ -161,6 +162,7 @@ class Summarizer:
             return ""
 
         try:
+            # 生成查询嵌入 - 这部分与原始代码相同
             query_embedding = self.get_huggingface_embedding(chunk_text)
             if query_embedding is None:
                 print("Failed to generate embedding for chunk")
@@ -172,21 +174,38 @@ class Summarizer:
                 k=top_k
             )
 
+            # 从结果中提取上下文信息
             contexts = []
             print("\nRetrieved contexts:")
             for i, result in enumerate(results):
                 if isinstance(result, dict):
                     context = result.get('text', '')
-                    contexts.append(context)
-                    print(f"Context {i + 1} preview: {context[:200]}...")  # Print first 200 chars
+                    score = result.get('score', 0)
+
+                    # 记录检索到的上下文及其相关性分数
+                    print(f"Context {i + 1} (score: {score:.4f}) preview: {context[:200]}...")
+
+                    # 只使用相关性足够高的上下文
+                    if score > 0.5:  # 可调整的阈值
+                        contexts.append(context)
                 elif isinstance(result, tuple) and len(result) >= 2:
                     context = result[1]
                     contexts.append(context)
-                    print(f"Context {i + 1} preview: {context[:200]}...")  # Print first 200 chars
+                    print(f"Context {i + 1} preview: {context[:200]}...")
 
-            combined_context = "\n\n".join(contexts)
-            print(f"\nTotal contexts retrieved: {len(contexts)}")
-            return combined_context
+            # 如果检索到高质量上下文，使用增强的上下文组合方法
+            if contexts:
+                # 创建前缀，明确这是背景知识而非原文的直接部分
+                context_prefix = "Relevant Background Knowledge:\n\n"
+                # 使用编号列表使不同上下文之间的界限更清晰
+                numbered_contexts = [f"{i + 1}. {ctx}" for i, ctx in enumerate(contexts)]
+                combined_context = context_prefix + "\n\n".join(numbered_contexts)
+
+                print(f"\nTotal contexts used: {len(contexts)}")
+                return combined_context
+            else:
+                print("No sufficiently relevant contexts found")
+                return ""
 
         except Exception as e:
             print(f"Chunk context retrieval error: {e}")
@@ -496,7 +515,7 @@ if __name__ == "__main__":
     parser.add_argument("--book_path", type=str, help="path to the file containing the chunked data")
     parser.add_argument("--summ_path", type=str, help="path to the json file to save the data")
     parser.add_argument("--model", type=str, help="summarizer model")
-    parser.add_argument("--api", type=str, help="api to use", choices=["openai", "anthropic", "together"])
+    parser.add_argument("--api", type=str, help="api to use", choices=["openai", "anthropic", "together", "huggingface"])
     parser.add_argument("--api_key", type=str, help="path to a txt file storing your OpenAI api key")
     parser.add_argument("--method", type=str, help="method for summarization", choices=['inc', 'hier'])
     parser.add_argument("--chunk_size", type=int, default=2048)

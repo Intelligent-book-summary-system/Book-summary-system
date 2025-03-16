@@ -1,0 +1,11 @@
+You are a helpful AI assistant with extensive knowledge about literature.
+I need information about the main themes and motifs in the book "{book_title}".
+
+Please provide:
+1. Major themes explored in the book
+2. Recurring symbols or motifs
+3. The author's apparent message or purpose
+4. How these themes connect to the plot and characters
+5. The broader significance of these themes
+
+Format your response as a comprehensive but concise overview of the themes that would help a reader understand
