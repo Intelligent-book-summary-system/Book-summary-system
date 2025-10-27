@@ -2,7 +2,9 @@
 
 An intelligent book summarization system that leverages hierarchical merging, RAG (Retrieval-Augmented Generation), and fine-tuned LLMs to generate high-quality summaries of long texts.
 
-## 📦 Repositories  
+## 🔗 Repository
+
+[GitHub Organization](https://github.com/orgs/Intelligent-book-summary-system/repositories)
 - Model: https://github.com/Intelligent-book-summary-system/Book-summary-system
 - Frontend: https://github.com/Intelligent-book-summary-system/Frontend
 - Backend: https://github.com/Intelligent-book-summary-system/Backend
@@ -297,10 +299,6 @@ booookscore/
 ├── score.py       # BookScore evaluation
 └── rouge_eval.py  # ROUGE metrics evaluation
 ```
-
-## 🔗 Repository
-
-[GitHub Organization](https://github.com/orgs/Intelligent-book-summary-system/repositories)
 
 ## 💡 Tips
 
