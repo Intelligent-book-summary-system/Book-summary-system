@@ -2,6 +2,11 @@
 
 An intelligent book summarization system that leverages hierarchical merging, RAG (Retrieval-Augmented Generation), and fine-tuned LLMs to generate high-quality summaries of long texts.
 
+## 📦 Repositories  
+- Model: https://github.com/Intelligent-book-summary-system/Book-summary-system
+- Frontend: https://github.com/Intelligent-book-summary-system/Frontend
+- Backend: https://github.com/Intelligent-book-summary-system/Backend
+
 ## 📚 Overview
 
 BookSummary is a comprehensive pipeline designed to tackle the challenge of summarizing long-form text documents such as books and lengthy articles. The system addresses LLM token limitations through an end-to-end workflow:
